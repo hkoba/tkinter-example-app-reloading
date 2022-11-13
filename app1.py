@@ -18,7 +18,8 @@ def GUI(self):
 
     self.text = Packed(Widget(self, 'editor', tk.Text,
                               width=80))
-    self.pack()
+    if 'pack' in dir(self):
+        self.pack()
 
 #========================================
 
@@ -29,9 +30,8 @@ class App(tk.Frame):
     def Reload(self):
         Reload(__file__)
 
-if 'root' not in locals():
-    root = tk.Tk()
-    myapp = App(root)
+if 'myapp' not in locals():
+    myapp = App(tk.Tk())
     myapp.mainloop()
 else:
     GUI(myapp)

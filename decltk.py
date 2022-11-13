@@ -3,19 +3,19 @@
 
 # Tkinter with declarative manner
 
-import tkinter as tk
+from tkinter import *
 
 import importlib
 import os
 import sys
 
-def Reload(filename):
+def Reload(filename: str):
     bn = os.path.basename(filename)
     (modName, _x) = os.path.splitext(bn)
     mod = sys.modules[modName]
     importlib.reload(mod)
 
-def Packed(widget, **kwargs):
+def Packed(widget: Widget, **kwargs):
     widget.pack(**kwargs)
     widget
 
@@ -24,8 +24,11 @@ def Packed(widget, **kwargs):
 # =>
 # Widget(frm, 'lab1', ttk.Label, text="Hello World!")
 #
-def Widget(parent, elName, type, **kwargs):
-    pathName = parent._w + '.' + elName
+def Widget(parent: Widget, elName: str, type, **kwargs):
+    if parent._w == '.':
+        pathName = '.' + elName
+    else:
+        pathName = parent._w + '.' + elName
     # print(pathName)
     if parent.tk.getint(parent.tk.call('winfo', 'exists', pathName)):
         w = parent.children[elName]
