@@ -36,8 +36,8 @@ def Widget(parent, elName, type, **kwargs):
     else:
         return type(parent, name=elName, **kwargs)
 
-def Redraw(self):
-    print("Redraw is called!")
+def GUI(self):
+    print("GUI is called!")
     if __name__ != "__main__":
         self.reload_btn = Packed(Widget(self, 'reload', tk.Button, text="reload", command=Reload))
 
@@ -47,11 +47,11 @@ def Redraw(self):
 class App(tk.Frame):
     def __init__(self, master):
         super().__init__(master)
-        Redraw(self)
+        GUI(self)
 
 if 'root' not in locals():
     root = tk.Tk()
     myapp = App(root)
     myapp.mainloop()
 else:
-    Redraw(myapp)
+    GUI(myapp)
