@@ -2,52 +2,32 @@
 # -*- coding: utf-8 -*-
 
 import tkinter as tk
-import importlib
-import os
-import sys
+from decltk import *
 
-print("Hello!")
+if __name__ == "__main__":
+    raise Exception("Please load as a module!")
 
-def Reload():
-    print("Hello again!")
-    if __name__ == "__main__":
-        raise Exception("Can't use reload feature in toplevel module!")
-    bn = os.path.basename(__file__)
-    (modName, _x) = os.path.splitext(bn)
-    mod = sys.modules[modName]
-    # print(mod)
-    # x globalx()
-    # x locals()
-    importlib.reload(mod)
-
-def Packed(widget, **kwargs):
-    widget.pack(**kwargs)
-    widget
-
-def Widget(parent, elName, type, **kwargs):
-    print("New widget")
-    pathName = parent._w + '.' + elName
-    print(pathName)
-    if parent.tk.getint(parent.tk.call('winfo', 'exists', pathName)):
-        w = parent.children[elName]
-        w.configure(**kwargs)
-        print("configure", elName, kwargs)
-        return w
-    else:
-        return type(parent, name=elName, **kwargs)
-
+#========================================
+#
+# Change the function GUI below and hit Reload button!
+#
 def GUI(self):
     print("GUI is called!")
-    if __name__ != "__main__":
-        self.reload_btn = Packed(Widget(self, 'reload', tk.Button, text="reload", command=Reload))
+    self.reload_btn = Packed(Widget(self, 'reload', tk.Button,
+                                    text="reload", command=self.Reload))
 
-    self.text = Packed(Widget(self, 'editor', tk.Text, width=120))
+    self.text = Packed(Widget(self, 'editor', tk.Text,
+                              width=80))
     self.pack()
+
+#========================================
 
 class App(tk.Frame):
     def __init__(self, master):
         super().__init__(master)
         GUI(self)
+    def Reload(self):
+        Reload(__file__)
 
 if 'root' not in locals():
     root = tk.Tk()
