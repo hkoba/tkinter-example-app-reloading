@@ -19,6 +19,9 @@ def Reload():
     # x locals()
     importlib.reload(mod)
 
+def Packed(widget, **kwargs):
+    widget.pack(**kwargs)
+    widget
 class App(tk.Frame):
     def __init__(self, master):
         super().__init__(master)
@@ -27,10 +30,9 @@ class App(tk.Frame):
 
     def Redraw(self):
         if __name__ != "__main__":
-            self.reload_btn = tk.Button(self, text="reload", command=Reload)
-            self.reload_btn.pack()
-        self.text = tk.Text(self)
-        self.text.pack()
+            self.reload_btn = Packed(tk.Button(self, text="reload", command=Reload))
+
+        self.text = Packed(tk.Text(self))
         self.pack()
 
 if __name__ == "__main__":
