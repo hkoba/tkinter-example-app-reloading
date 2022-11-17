@@ -32,6 +32,5 @@ class App(tk.Frame):
 
 if 'myapp' not in locals():
     myapp = App(tk.Tk())
-    myapp.mainloop()
 else:
     GUI(myapp)
