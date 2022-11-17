@@ -1,4 +1,4 @@
-# GUI Hot Reloading idiom in tkinter
+# Please do not try this for now. ~GUI Hot Reloading idiom in tkinter~
 
 (Disclaimer: I'm very new to python. If you find a better way than this, please tell me!)
 
