@@ -13,7 +13,7 @@ def Reload(filename: str):
     bn = os.path.basename(filename)
     (modName, _x) = os.path.splitext(bn)
     mod = sys.modules[modName]
-    importlib.reload(mod)
+    return importlib.reload(mod)
 
 def Packed(widget: Widget, **kwargs):
     widget.pack(**kwargs)
