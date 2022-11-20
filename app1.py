@@ -17,9 +17,10 @@ if __name__ == "__main__":
 class App(tk.Frame):
     def __init__(self, master):
         super().__init__(master)
-        GUI(self)
+        self.GUI()
     def Reload(self):
-        Reload(__file__)
+        m = Reload(__file__)
+        m.App.GUI(self)
     def GUI(self):
         print("GUI is called!")
         self.reload_btn = Packed(Widget(self, 'reload', tk.Button,
