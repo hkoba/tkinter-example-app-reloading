@@ -20,7 +20,8 @@ class App(tk.Frame):
         self.GUI()
     def Reload(self):
         m = Reload(__file__)
-        m.App.GUI(self)
+        self.__class__ = m.App
+        self.GUI()
     def GUI(self):
         print("GUI is called!")
         self.reload_btn = Packed(Widget(self, 'reload', tk.Button,
