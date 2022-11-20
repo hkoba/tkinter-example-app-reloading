@@ -4,4 +4,5 @@
 import tkinter as tk
 import app1
 
-app1.myapp.mainloop()
+myapp = app1.App(tk.Tk())
+myapp.mainloop()

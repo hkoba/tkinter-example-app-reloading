@@ -11,15 +11,6 @@ if __name__ == "__main__":
 #
 # Change the function GUI below and hit Reload button!
 #
-def GUI(self):
-    print("GUI is called!")
-    self.reload_btn = Packed(Widget(self, 'reload', tk.Button,
-                                    text="reload", command=self.Reload))
-
-    self.text = Packed(Widget(self, 'editor', tk.Text,
-                              width=80))
-    if 'pack' in dir(self):
-        self.pack()
 
 #========================================
 
@@ -29,8 +20,13 @@ class App(tk.Frame):
         GUI(self)
     def Reload(self):
         Reload(__file__)
+    def GUI(self):
+        print("GUI is called!")
+        self.reload_btn = Packed(Widget(self, 'reload', tk.Button,
+                                        text="reload", command=self.Reload))
 
-if 'myapp' not in locals():
-    myapp = App(tk.Tk())
-else:
-    GUI(myapp)
+        self.text = Packed(Widget(self, 'editor', tk.Text,
+                                  width=80))
+
+        if 'pack' in dir(self):
+            self.pack()
