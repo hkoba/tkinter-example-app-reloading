@@ -22,11 +22,18 @@ class App(tk.Frame):
         m = Reload(__file__)
         self.__class__ = m.App
         self.GUI()
+
+    # def foo(self):
+    #     print('foobar', self.yy)
+
     def GUI(self):
         print("GUI is called!")
+        # self.yy = 3
         self.reload_btn = Packed(Widget(self, 'reload', tk.Button,
                                         text="reload", command=self.Reload))
 
+        # self.xx = Packed(Widget(self, 'other', tk.Button,
+        #                                 text="foo", command=self.foo))
         self.text = Packed(Widget(self, 'editor', tk.Text,
                                   width=80))
 
