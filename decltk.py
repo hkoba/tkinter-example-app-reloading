@@ -17,7 +17,7 @@ def Reload(filename: str):
 
 def Packed(widget: Widget, **kwargs):
     widget.pack(**kwargs)
-    widget
+    return widget
 
 #
 # ttk.Label(frm, text="Hello World!")
